@@ -8,13 +8,13 @@ from .models import Order, Product
 
 def get_orders(request):
     orders = Order.objects.all()
-    return render(request, 'shop_app/orders.html', {'orders': orders})
+    return render(request, 'shopapp/orders.html', {'orders': orders})
 
 
 def get_order(request, order_id):
     order = get_object_or_404(Order, pk=order_id)
     client_orders = Order.objects.filter(order_client=order.order_client)
-    return render(request, 'shop_app/order_details.html', {'order': order, 'client_orders': client_orders})
+    return render(request, 'shopapp/order_details.html', {'order': order, 'client_orders': client_orders})
 
 
 def get_ordered_products(request):
@@ -32,7 +32,7 @@ def get_ordered_products(request):
         'ordered_products_365_days': ordered_products_365_days,
     }
 
-    return render(request, 'shop_app/ordered_products.html', context)
+    return render(request, 'shopapp/ordered_products.html', context)
 
 
 def client_form(request):
@@ -50,7 +50,7 @@ def client_form(request):
     else:
         form = forms.ClientForm()
 
-    return render(request, 'shop_app/base.html',
+    return render(request, 'shopapp/base.html',
                   {'form': form, 'message': message, 'title': 'Сохранение клинта'})
 
 
@@ -70,7 +70,7 @@ def product_form(request):
     else:
         form = forms.ProductForm()
 
-    return render(request, 'shop_app/image.html',
+    return render(request, 'shopapp/image.html',
                   {'form': form, 'message': message, 'title': 'Сохранение продукта'})
 
 
@@ -88,7 +88,7 @@ def order_form(request):
     else:
         form = forms.OrderForm()
 
-    return render(request, 'shop_app/base.html',
+    return render(request, 'shopapp/base.html',
                   {'form': form, 'message': message, 'title': 'Сохранение заказа'})
 
 

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Client Orders</title>
+</head>
+<body>
+<h1>Client Orders</h1>
+<h2>Client: {{ order.order_client.name }}</h2>
+<ul>
+    {% for order_item in client_orders %}
+    <li>
+        <a href="{% url 'order_details' order_item.id %}">Order #{{ order_item.id }}</a>
+    </li>
+    {% endfor %}
+</ul>
+</body>
+</html>
